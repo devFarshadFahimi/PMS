@@ -19,13 +19,8 @@ public class GetUserInfoQuery : IQueryRequest<UserInfoResponse>
 
 public class GetUserInfoQueryHandler : QueryRequestHandler<GetUserInfoQuery, UserInfoResponse>
 {
-    public override Task<Result<UserInfoResponse>> Handle(GetUserInfoQuery request, CancellationToken cancellationToken)
+    public override Task<UserInfoResponse> Handle(GetUserInfoQuery request, CancellationToken cancellationToken)
     {
-        if (Random.Shared.Next(0, 10) < 5)
-        {
-            return ErrorAsync("پروفایل کاربر رو نمیدممممم");
-        }
-
         var user = new UserInfoResponse
         {
             Id = request.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? request.User.FindFirstValue("sub") ?? string.Empty,
@@ -40,6 +35,6 @@ public class GetUserInfoQueryHandler : QueryRequestHandler<GetUserInfoQuery, Use
                 .SelectMany(c => c.Value.Split(',').ToList())]
         };
 
-        return OkAsync(user);
+        return Task.FromResult(user);
     }
 }

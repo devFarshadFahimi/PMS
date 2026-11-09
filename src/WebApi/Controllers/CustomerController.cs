@@ -1,9 +1,11 @@
 ﻿using Application.Features.Customers.Commands.CreateCustomer;
 using Application.Features.Customers.Queries.GetCustomer;
 using BusinessMakerFramework.SourceGenerator.Shared.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 namespace WebApi.Controllers;
 
+[Authorize]
 public class CustomerController(IMediator mediator) : ApiControllerBase(mediator)
 {
     [HttpPost]

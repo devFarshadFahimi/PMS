@@ -12,11 +12,9 @@ public class UserIsLoginQuery : IQueryRequest<bool>
 
 public class UserIsLoginQueryHandler(ICacheAdapter cacheAdapter, IDateTimeService dateTimeService) : QueryRequestHandler<UserIsLoginQuery, bool>
 {
-    public override Task<Result<bool>> Handle(UserIsLoginQuery request, CancellationToken cancellationToken)
+    public override Task<bool> Handle(UserIsLoginQuery request, CancellationToken cancellationToken)
     {
         var response = cacheAdapter.Get<LoginResponseDTO?>(request.UserId);
-        return response is null
-            ? OkAsync(false)
-            : OkAsync(response.AccessTokenExpiryTime > dateTimeService.UtcNow);
+        return Task.FromResult(response is not null && response.AccessTokenExpiryTime > dateTimeService.UtcNow);
     }
 }

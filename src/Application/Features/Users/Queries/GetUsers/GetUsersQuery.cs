@@ -3,20 +3,8 @@ using Domain.Entities.UserAggregate;
 using Microsoft.AspNetCore.DataProtection;
 
 namespace Application.Features.Users.Queries.GetUsers;
-//public class UserDto
-//{
-//    public long Id { get; set; }
-//    public DateTime ValidTo { get; set; }
 
-//    [MapToEntity("User.UserName")]
-//    public string UserUserName { get; set; }
-
-//    [MapToEntity("User.Id")]
-//    public long UserId { get; set; }
-//}
-
-
-public class UserDto
+public class UserDTO
 {
     public long Id { get; set; }
     public bool IsSystem { get; set; }
@@ -25,7 +13,7 @@ public class UserDto
 }
 
 
-public class GetUsersQuery : IQueryRequest<PaginationResult<UserDto>>
+public class GetUsersQuery : IQueryRequest<PaginationResult<UserDTO>>
 {
     public GetUsersQuery(PaginationParams paginatedParams)
     {
@@ -35,7 +23,7 @@ public class GetUsersQuery : IQueryRequest<PaginationResult<UserDto>>
     public PaginationParams PaginatedParams { get; set; }
 }
 
-public class GetUsersQueryHandler : QueryRequestHandler<GetUsersQuery, PaginationResult<UserDto>>
+public class GetUsersQueryHandler : QueryRequestHandler<GetUsersQuery, PaginationResult<UserDTO>>
 {
     private readonly IAuthDbContext _context;
 
@@ -45,9 +33,9 @@ public class GetUsersQueryHandler : QueryRequestHandler<GetUsersQuery, Paginatio
         _context = context;
     }
 
-    public override async Task<Result<PaginationResult<UserDto>>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
+    public override async Task<PaginationResult<UserDTO>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
     {
-        var result = await _context.Users.GetPaginatedDataAsync<UserDto, User>(request.PaginatedParams);
-        return Ok(result);
+        var result = await _context.Users.GetPaginatedDataAsync<UserDTO, User>(request.PaginatedParams);
+        return result;
     }
 }

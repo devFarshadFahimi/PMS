@@ -2,6 +2,7 @@
 using Application.Common;
 using Application.Common.Services;
 using BusinessMakerFramework.Application.Service;
+using BusinessMakerFramework.Infrastructure.EventStore.Extensions;
 using Infrastructure.Interceptors;
 using Infrastructure.Options.Extensions;
 using Infrastructure.Services;
@@ -43,7 +44,7 @@ public static class DependencyInjections
         _ = services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
         _ = services.AddScoped<IAuthService, AuthService>();
 
-        //services.AddScoped<IEventStoreContext, EventStoreDbContext>();
+        services.AddEventStoreContext(configuration.GetConnectionString("EventStore")!);
 
         services.AddOptionsSetups();
         _ = services.AddDateTimeService();

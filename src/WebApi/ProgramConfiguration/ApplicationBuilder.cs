@@ -1,4 +1,7 @@
-﻿namespace WebApi.ProgramConfiguration;
+﻿using System.Runtime.InteropServices;
+using Scalar.AspNetCore;
+
+namespace WebApi.ProgramConfiguration;
 
 public static class ApplicationBuilder
 {
@@ -7,8 +10,19 @@ public static class ApplicationBuilder
         app.UseFrameworkExceptionHandler();
         _ = app.MapFrameworkMapPrometheusScrapingEndpoint();
         app.UseFrameworkSerilogRequestLogging();
+        _ = app.MapOpenApi();
+        _ = app.MapScalarApiReference(p =>
+        {
+            ScalarAuthenticationOptions scalarAuthenticationOptions = new();
+            int num = 1;
+            List<string> list = new(num);
+            CollectionsMarshal.SetCount(list, num);
+            CollectionsMarshal.AsSpan(list)[0] = "Bearer";
+            scalarAuthenticationOptions.PreferredSecuritySchemes = list;
+            p.Authentication = scalarAuthenticationOptions;
+        });
 
-        _ = app.UseBuildingBlockSwagger(Environments.Development, docTitle: "وب سرویس");
+        _ = app.UseFrameworkSwagger(Environments.Development, docTitle: "وب سرویس");
         _ = app.UseHttpsRedirection();
         _ = app.UseCors(p =>
         {

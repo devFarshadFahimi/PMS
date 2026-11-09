@@ -11,13 +11,21 @@ namespace WebApi.Controllers;
 [Route("api/v{version:apiVersion}/[controller]")]
 public abstract class ApiControllerBase(IMediator mediator) : ControllerBase
 {
-    protected async Task<IActionResult> SendAsync<TCQ>(
-     IRequest<Result<TCQ>> commandOrQuery,
+    protected async Task<IActionResult> SendAsync<T>(
+     IRequest<Result<T>> commandOrQuery,
      CancellationToken cancellationToken)
     {
         var result = await mediator.SendAsync(commandOrQuery!, cancellationToken);
         return result.ToActionResult();
     }
+    protected async Task<IActionResult> SendAsync<T>(
+     IRequest<T> commandOrQuery,
+     CancellationToken cancellationToken)
+    {
+        var result = await mediator.SendAsync(commandOrQuery!, cancellationToken);
+        return Ok(result);
+    }
+
     protected async Task<IActionResult> SendAsync(
         IRequest<Result> commandOrQuery,
         CancellationToken cancellationToken)

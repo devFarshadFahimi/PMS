@@ -17,7 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Security.Cryptography.Xml" />
         <PackageReference Include="BusinessFramework.Domain.Core" />
         <PackageReference Include="BusinessFramework.Domain.Toolkits" />
         <PackageReference Include="Microsoft.Extensions.Identity.Stores" />

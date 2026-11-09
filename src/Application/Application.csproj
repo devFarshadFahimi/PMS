@@ -9,8 +9,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Security.Cryptography.Xml" />
-
         <PackageReference Include="BusinessFramework.Application.Common" />
         <PackageReference Include="BusinessFramework.Application.Service" />
         <PackageReference Include="BusinessFramework.Domain.Core" />
@@ -26,6 +24,10 @@
         <PackageReference Include="RabbitMQ.Client" />
 
         <PackageReference Include="BusinessFramework.SourceGenerator" />
+
+        <PackageReference Include="System.Security.Cryptography.Pkcs" />
+
+        <PackageReference Include="System.Security.Cryptography.Xml" />
 
     </ItemGroup>
 

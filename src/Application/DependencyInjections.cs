@@ -27,7 +27,6 @@ public static class DependencyInjections
             option.Configuration = "localhost:6379";
             option.InstanceName = "BusinessMaker.Sample.";
         });
-
         _ = services.AddCommandHandlers();
         _ = services.AddFrameworkMediator();
 
