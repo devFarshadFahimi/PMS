@@ -22,7 +22,6 @@ public static class ApplicationBuilder
             p.Authentication = scalarAuthenticationOptions;
         });
 
-        _ = app.UseFrameworkSwagger(Environments.Development, docTitle: "وب سرویس");
         _ = app.UseHttpsRedirection();
         _ = app.UseCors(p =>
         {
@@ -35,7 +34,7 @@ public static class ApplicationBuilder
         _ = app.UseAuthentication();
         _ = app.UseAuthorization();
 
-        app.UseHealthCheckEndpoints();
+        //app.UseHealthCheckEndpoints();
 
         _ = app.MapControllers();
         app.Run();

@@ -82,14 +82,18 @@ public static class ServiceCollections
     {
         builder.Services.AddInfrastructureServices(builder.Configuration);
 
-        _ = builder.Services.AddOpenApi(options =>
-        {
-            _ = options.AddOperationTransformer<ActionSummaryNamingTransformer>();
-            _ = options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
-        });
+        _ = builder.Services.AddFrameworkApiVersioning();
 
+        builder.AddOpenApiDocument(
+        "Edge Services - Product",
+        "This is the PMS service",
+        action: p =>
+        {
+            _ = p.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
+            _ = p.AddOperationTransformer<ActionSummaryNamingTransformer>();
+
+        });
         _ = builder.Services.AddControllers();
-        _ = builder.Services.AddBuildingBlockSwagger(builder.Configuration, addBearerScheme: true);
         _ = builder.Services.AddHttpClient().AddHttpContextAccessor();
         _ = builder.Services.AddSingleton<IMinioClient>(
              new MinioClient()
@@ -109,12 +113,12 @@ public static class ServiceCollections
 
         builder.Services.AddAuthService(builder.Configuration);
 
-        _ = builder.Services.AddFrameworkHealthCheck()
-          .AddDbContextCheck<ApplicationDbContext>("MainContext")
-          .AddRedis("localhost:6379");
+        //_ = builder.Services.AddFrameworkHealthCheck()
+        //  .AddDbContextCheck<ApplicationDbContext>("MainContext")
+        //  .AddRedis("localhost:6379");
 
-        _ = builder.Services.AddFrameworkHealthCheckUI("http://localhost:5010/hc")
-            .AddPostgreSqlStorage(builder.Configuration.GetConnectionString("HealthCheckConnection")!);
+        //_ = builder.Services.AddFrameworkHealthCheckUI("http://localhost:5010/hc")
+        //    .AddPostgreSqlStorage(builder.Configuration.GetConnectionString("HealthCheckConnection")!);
 
         if (builder.Environment.IsDevelopment())
         {

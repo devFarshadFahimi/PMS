@@ -2,7 +2,7 @@
 <Project>
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <MicrosoftRelatedPackagesVersion>10.0.8</MicrosoftRelatedPackagesVersion>
+    <MicrosoftRelatedPackagesVersion>10.0.14</MicrosoftRelatedPackagesVersion>
     <BusinessFrameworkPackagesVersion>0.3.22-preview</BusinessFrameworkPackagesVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -33,6 +33,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(MicrosoftRelatedPackagesVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="$(MicrosoftRelatedPackagesVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="$(MicrosoftRelatedPackagesVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="$(MicrosoftRelatedPackagesVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="$(MicrosoftRelatedPackagesVersion)" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.2" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(MicrosoftRelatedPackagesVersion)" />
@@ -66,7 +67,7 @@
     <PackageVersion Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="9.0.0" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.PostgreSql.Storage" Version="9.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="9.0.8" />
-    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
-    <PackageVersion Include="System.Security.Cryptography.Xml" Version="10.0.13" />
+    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="$(MicrosoftRelatedPackagesVersion)" />
+    <PackageVersion Include="System.Security.Cryptography.Xml" Version="$(MicrosoftRelatedPackagesVersion)" />
   </ItemGroup>
 </Project>
