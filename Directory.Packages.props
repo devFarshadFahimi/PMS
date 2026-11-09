@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <MicrosoftRelatedPackagesVersion>10.0.8</MicrosoftRelatedPackagesVersion>
+        <BusinessFrameworkPackagesVersion>0.2.19-preview</BusinessFrameworkPackagesVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageVersion Include="BusinessFramework.SourceGenerator" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="IdentityModel" Version="5.2.0" />
+
+        <PackageVersion Include="BusinessFramework.Application.Service" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="BusinessFramework.Domain.Core" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="BusinessFramework.Domain.Toolkits" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="BusinessFramework.Endpoint.WebApi" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="BusinessFramework.Application.Common" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="BusinessFramework.Infrastructure.Common" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="BusinessFramework.Infrastructure.SqlCommand" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="BusinessFramework.Infrastructure.SqlQuery" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="BusinessFramework.Shared.Abstractions.Caching" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="BusinessFramework.Shared.Extensions.Caching.Distributed.Redis" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="BusinessFramework.Shared.Extensions.Serializer.Microsoft" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="BusinessFramework.Shared.Utilities" Version="$(BusinessFrameworkPackagesVersion)" />
+        <PackageVersion Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="$(MicrosoftRelatedPackagesVersion)" />
+        
+        <PackageVersion Include="Minio" Version="6.0.4" />
+        <PackageVersion Include="StyleCop.Analyzers" Version="1.1.118" />
+        <PackageVersion Include="Bogus" Version="35.6.2" />
+        <PackageVersion Include="Confluent.Kafka" Version="2.9.0" />
+        
+        <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.Extensions.Http" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.Extensions.Identity.Stores" Version="$(MicrosoftRelatedPackagesVersion)" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="5.3.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="5.3.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="5.3.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="5.3.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.3.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="5.3.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageVersion>
+        
+        <PackageVersion Include="ocelot.provider.consul" Version="23.4.3" />
+        
+        <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="1.12.0" />
+        <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.12.0" />
+        <PackageVersion Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" Version="1.12.0-beta.1" />
+        <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
+        <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0" />
+        <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.12.0" />
+        
+        <PackageVersion Include="prometheus-net" Version="8.2.1" />
+        <PackageVersion Include="RabbitMQ.Client" Version="7.0.0" />
+        <PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
+        <PackageVersion Include="Serilog.Sinks.Seq" Version="9.0.0" />
+        <PackageVersion Include="Serilog.Sinks.Grafana.Loki" Version="8.3.0" />
+
+        <PackageVersion Include="AspNetCore.HealthChecks.Redis" Version="9.0.0" />
+        <PackageVersion Include="AspNetCore.HealthChecks.SqlServer" Version="9.0.0" />
+        <PackageVersion Include="AspNetCore.HealthChecks.UI" Version="9.0.0" />
+        <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
+        <PackageVersion Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="9.0.0" />
+        <PackageVersion Include="AspNetCore.HealthChecks.UI.SqlServer.Storage" Version="9.0.0" />
+        <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="9.0.8" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BusinessFramework.Application.Service" />
+        <PackageReference Include="BusinessFramework.Domain.Core" />
+        <PackageReference Include="BusinessFramework.Infrastructure.Common" />
+        <PackageReference Include="BusinessFramework.Infrastructure.SqlCommand" />
+        <PackageReference Include="BusinessFramework.Infrastructure.SqlQuery" />
+        <PackageReference Include="Confluent.Kafka" />
+        <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" />
+        <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Common" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.Http" />
+
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Application\Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Migrations\" />
+    </ItemGroup>
+
+</Project>

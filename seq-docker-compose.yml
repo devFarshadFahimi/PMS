@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  seq:
+    container_name: seq
+    environment:
+      - ACCEPT_EULA=Y
+      # - SEQ_FIRSTRUN_ADMINUSERNAME=admin
+      # - SEQ_FIRSTRUN_ADMINPASSWORDHASH=123456aA@
+      # - SEQ_FIRSTRUN_REQUIREAUTHENTICATIONFORHTTPINGESTION=True
+    volumes:
+      - c:/volumes/seq-data:/data
+    ports:
+      - 5341:80
+    deploy:
+      resources:
+        limits:
+          memory: 16g
+    memswap_limit: 16g
+    image: datalust/seq

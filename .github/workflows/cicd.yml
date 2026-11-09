@@ -1,0 +1,40 @@
+name: Deploy to Windows Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Add SSH Key
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy to Windows Server
+      env:
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+      run: |
+        ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST << 'EOF'
+          # Clone the repository or pull the latest changes
+          cd C:/path/to/deployment || mkdir C:/path/to/deployment
+          cd C:/path/to/deployment
+          git clone https://github.com/BusinessMaker/business-maker-service.git . || git pull origin main
+
+          # Build the Docker image
+          docker build -t myapp:latest .
+
+          # Stop and remove the existing container if it exists
+          docker rm -f myapp-container || true
+
+          # Run the new Docker container
+          docker run -d --name myapp-container -p 80:80 myapp:latest
+        EOF
