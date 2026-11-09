@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="Entities\UserAggregate\Specifications\PageSpecs\**" />
+        <Compile Remove="Events\**" />
+        <EmbeddedResource Remove="Entities\UserAggregate\Specifications\PageSpecs\**" />
+        <EmbeddedResource Remove="Events\**" />
+        <None Remove="Entities\UserAggregate\Specifications\PageSpecs\**" />
+        <None Remove="Events\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Contracts\IHasPage.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BusinessFramework.Domain.Core" />
+        <PackageReference Include="BusinessFramework.Domain.Toolkits" />
+        <PackageReference Include="Microsoft.Extensions.Identity.Stores" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,102 @@
+name: BusinessMakerService
+on:
+  push:
+    branches:
+      - main
+      #- 'releases/**'
+
+jobs:
+  # restore:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       dotnet-version: [ '8.0.x' ]
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+  #       uses: actions/setup-dotnet@v3
+  #       with:
+  #         dotnet-version: ${{ matrix.dotnet-version }}
+  #     - name: Install dependencies
+  #       run: dotnet restore
+  build:
+    # needs: restore
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: [ '8.0.x' ]
+    steps:
+      # - uses: actions/checkout@v3
+      # - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+      #   uses: actions/setup-dotnet@v3
+      #   with:
+      #     dotnet-version: ${{ matrix.dotnet-version }}
+      # - name: Install dependencies
+      #   run: dotnet restore
+      # - name: Build
+      #   run: dotnet build --configuration Release --no-restore
+      - name: Secret
+        run: echo "$GITHUB_CONTEXT"
+      - name: Var
+        run: echo ${{ vars.TEST_VAR }}
+        
+  # test:
+  #   needs : build
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       dotnet-version: [ '7.0.x' ]
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+  #       uses: actions/setup-dotnet@v3
+  #       with:
+  #         dotnet-version: ${{ matrix.dotnet-version }}
+  #     - name: Install dependencies
+  #       run: dotnet restore
+  #     #- name: Build
+  #     #  run: dotnet build --configuration Release --no-restore
+  #     - name: Test
+  #       run: dotnet test --no-restore --verbosity normal
+  #publish:
+  #  needs : test
+  #  runs-on: ubuntu-latest
+  #  strategy:
+  #    matrix:
+  #      dotnet-version: [ '7.0.x' ]
+  #  steps:
+  #    - uses: actions/checkout@v3
+  #    - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+  #      uses: actions/setup-dotnet@v3
+  #      with:
+  #        dotnet-version: ${{ matrix.dotnet-version }}
+  #    - name: Install dependencies
+  #      run: dotnet restore
+  #    - name: Build
+  #      run: dotnet build --configuration Release --no-restore
+  #    - name: Publish
+  #      run: dotnet publish -p:PublishProfile=FolderProfile
+  #    - name: Upload artifacts 
+  #      uses: actions/upload-artifact@v3
+  #      with:
+  #        name: publish
+  #        path: src/WebApi/bin/Debug/net7.0/publish
+  #        working-directory: src/WebApi/bin/Debug/net7.0/publish
+
+  #run:
+  #   needs : test
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #    matrix:
+  #      dotnet-version: [ '7.0.x' ]
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+  #       uses: actions/setup-dotnet@v3
+  #       with:
+  #        dotnet-version: ${{ matrix.dotnet-version }}
+  #     - name: run
+  #       run: dotnet run --environment Production
+  #       working-directory: src/WebApi
+
+      

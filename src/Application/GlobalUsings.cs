@@ -1,0 +1,11 @@
+﻿global using Application.Common;
+global using Application.Common.Services;
+global using Application.Features.Auth.Common;
+global using BusinessMakerFramework.Application.Common.Contracts;
+global using BusinessMakerFramework.Application.Common.Contracts.Interfaces;
+global using BusinessMakerFramework.Application.Service.Contracts;
+global using BusinessMakerFramework.Shared.Abstractions.Caching;
+global using BusinessMakerFramework.Shared.Utilities.Extensions;
+global using BusinessMakerFramework.Shared.Utilities.Utilities;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.EntityFrameworkCore;
