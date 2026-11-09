@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using Domain.Entities.UserAggregate;
 using Infrastructure;
 using Infrastructure.Options;
@@ -114,7 +114,7 @@ public static class ServiceCollections
           .AddRedis("localhost:6379");
 
         _ = builder.Services.AddFrameworkHealthCheckUI("http://localhost:5010/hc")
-            .AddSqlServerStorage(builder.Configuration.GetConnectionString("HealthCheckConnection")!);
+            .AddPostgreSqlStorage(builder.Configuration.GetConnectionString("HealthCheckConnection")!);
 
         if (builder.Environment.IsDevelopment())
         {

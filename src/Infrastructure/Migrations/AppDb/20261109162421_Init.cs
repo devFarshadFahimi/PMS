@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -20,16 +21,16 @@ namespace Infrastructure.Migrations.AppDb
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Code = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Code = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
                     Balance = table.Column<long>(type: "bigint", nullable: false),
-                    CreatedByUserId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifiedByUserId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    ModifiedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    BusinessId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Version = table.Column<int>(type: "int", nullable: false)
+                    CreatedByUserId = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    CreatedDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    ModifiedByUserId = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    ModifiedDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    BusinessId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Version = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

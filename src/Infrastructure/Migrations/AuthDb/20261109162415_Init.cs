@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -19,10 +20,10 @@ namespace Infrastructure.Migrations.AuthDb
                 schema: "Base",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FriendlyName = table.Column<string>(type: "nvarchar(max)", maxLength: 32767, nullable: true),
-                    Xml = table.Column<string>(type: "nvarchar(max)", maxLength: 32767, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FriendlyName = table.Column<string>(type: "character varying(32767)", maxLength: 32767, nullable: true),
+                    Xml = table.Column<string>(type: "character varying(32767)", maxLength: 32767, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -35,11 +36,11 @@ namespace Infrastructure.Migrations.AuthDb
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IsSystem = table.Column<bool>(type: "bit", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IsSystem = table.Column<bool>(type: "boolean", nullable: false),
+                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,22 +53,22 @@ namespace Infrastructure.Migrations.AuthDb
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IsSystem = table.Column<bool>(type: "bit", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", maxLength: 32767, nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IsSystem = table.Column<bool>(type: "boolean", nullable: false),
+                    UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
+                    PasswordHash = table.Column<string>(type: "character varying(32767)", maxLength: 32767, nullable: true),
+                    SecurityStamp = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    PhoneNumber = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "boolean", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "boolean", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "boolean", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,11 +80,11 @@ namespace Infrastructure.Migrations.AuthDb
                 schema: "Base",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     RoleId = table.Column<long>(type: "bigint", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
+                    ClaimType = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    ClaimValue = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -102,11 +103,11 @@ namespace Infrastructure.Migrations.AuthDb
                 schema: "Base",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<long>(type: "bigint", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
+                    ClaimType = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    ClaimValue = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -125,10 +126,10 @@ namespace Infrastructure.Migrations.AuthDb
                 schema: "Base",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LoginProvider = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    ProviderKey = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Id = table.Column<long>(type: "bigint", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ProviderDisplayName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     UserId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
@@ -177,12 +178,12 @@ namespace Infrastructure.Migrations.AuthDb
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ValidTo = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UserId = table.Column<long>(type: "bigint", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Value = table.Column<string>(type: "nvarchar(max)", maxLength: 32767, nullable: true)
+                    LoginProvider = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    Value = table.Column<string>(type: "character varying(32767)", maxLength: 32767, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -201,8 +202,7 @@ namespace Infrastructure.Migrations.AuthDb
                 schema: "Base",
                 table: "TblRole",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_TblRoleClaim_RoleId",
@@ -221,8 +221,7 @@ namespace Infrastructure.Migrations.AuthDb
                 schema: "Base",
                 table: "TblUser",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_TblUserClaim_UserId",

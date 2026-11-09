@@ -1,4 +1,4 @@
-﻿using Application;
+using Application;
 using Application.Common;
 using Application.Common.Services;
 using BusinessMakerFramework.Application.Service;
@@ -21,13 +21,13 @@ public static class DependencyInjections
         var connectionString = configuration.GetConnectionString("DefaultConnection");
         _ = services.AddDbContext<AuthDbContext>((p, options) =>
         {
-            _ = options.UseSqlServer(connectionString);
+            _ = options.UseNpgsql(connectionString);
             _ = options.AddInterceptors(p.GetRequiredService<EventStoreInterceptor>());
         });
 
         _ = services.AddDbContext<ApplicationDbContext>((p, options) =>
         {
-            _ = options.UseSqlServer(connectionString);
+            _ = options.UseNpgsql(connectionString);
             _ = options.AddInterceptors(
                 p.GetRequiredService<EventStoreInterceptor>(),
                 p.GetRequiredService<AuditStoreInterceptor>());

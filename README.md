@@ -1,18 +1,25 @@
-# App_MicroService_Product
+# PMS
 
-dotnet ef  migrations add "init" -p ./src/Infrastructure/Infrastructure.csproj -s ./src/WebUI/WebUI.csproj
+PMS is a .NET 10 Web API for customer, user, and wallet management. It uses ASP.NET Core Identity and JWT authentication, Entity Framework Core with PostgreSQL, and EventStore for domain events and auditing.
 
-dotnet ef database update -p ./src/Infrastructure/Infrastructure.csproj -s ./src/WebUI/WebUI.csproj --context ApplicationDbContext
+## Structure
 
-Microservice Product : http://localhost:6100/swagger/index.html
+- **Domain**: entities, value objects, and domain events.
+- **Application**: commands, queries, handlers, and service contracts.
+- **Infrastructure**: persistence, identity, event storage, and supporting services.
+- **WebApi**: HTTP controllers, authentication, OpenAPI, health checks, and telemetry.
 
-docker run --rm -p 6100:6000 -p 6101:6001 -e ASPNETCORE_HTTP_PORT=https://+:6001 -e ASPNETCORE_URLS=http://+:6000 microservice-product
+## Run locally
 
+Install the .NET 10 SDK and PostgreSQL. Local database settings are in `src/WebApi/appsettings.Development.json`. The application uses `pms-application`; health-check history uses `pms-application-health`. Ensure the configured PostgreSQL account can access these databases.
 
-docker compuse build
+The development configuration also references EventStore, Redis, MinIO, Seq, Loki, and an OpenTelemetry collector. Supporting container definitions are provided in the repository.
 
-docker compose up
+```sh
+dotnet restore
+dotnet ef database update --project src/Infrastructure --startup-project src/WebApi --context AuthDbContext
+dotnet ef database update --project src/Infrastructure --startup-project src/WebApi --context ApplicationDbContext
+dotnet run --project src/WebApi --launch-profile http
+```
 
-Scaffold-DbContext "Name=ConnectionStrings:DefaultConnection" Microsoft.EntityFrameworkCore.SqlServer -OutputDir QueryPersistence -force
-
-	docker run --name seq -d -e ACCEPT_EULA=Y -e SEQ_FIRSTRUN_ADMINUSERNAME=admin -e SEQ_FIRSTRUN_ADMINPASSWORDHASH="123456aA@" -e 	SEQ_FIRSTRUN_REQUIREAUTHENTICATIONFORHTTPINGESTION=True -v C:/seq-data/data:/data -p 5341:80 --memory=16g --memory-swap=16g datalust/seq
+Both database contexts have their own PostgreSQL `Init` migration. Apply both when setting up a fresh database. Use environment variables or user secrets to override connection strings and authentication settings outside local development.
