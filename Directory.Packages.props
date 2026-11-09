@@ -3,7 +3,7 @@
     <PropertyGroup>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
         <MicrosoftRelatedPackagesVersion>10.0.8</MicrosoftRelatedPackagesVersion>
-        <BusinessFrameworkPackagesVersion>0.2.19-preview</BusinessFrameworkPackagesVersion>
+        <BusinessFrameworkPackagesVersion>0.3.22-preview</BusinessFrameworkPackagesVersion>
     </PropertyGroup>
     <ItemGroup>
         <PackageVersion Include="BusinessFramework.SourceGenerator" Version="$(BusinessFrameworkPackagesVersion)" />
