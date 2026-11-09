@@ -6,7 +6,8 @@
     <ItemGroup>
         <!--<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" />-->
-        
+        <PackageReference Include="System.Security.Cryptography.Pkcs" />
+
         <PackageReference Include="AspNetCore.HealthChecks.Redis" />
         <PackageReference Include="AspNetCore.HealthChecks.SqlServer" />
         <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" />

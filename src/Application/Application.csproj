@@ -9,6 +9,8 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="System.Security.Cryptography.Xml" />
+
         <PackageReference Include="BusinessFramework.Application.Common" />
         <PackageReference Include="BusinessFramework.Application.Service" />
         <PackageReference Include="BusinessFramework.Domain.Core" />
